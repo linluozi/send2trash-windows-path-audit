@@ -1,0 +1,13 @@
+CONTROL (unmutated): GREEN
+[KILLED] M1 no normalisation (original abspath-only-if-relative)  (failed=13)
+[KILLED] M2 no NUL rejection  (failed=2)
+[KILLED] M3 no blank/positional rejection  (failed=6)
+[KILLED] M4 naive prefix strip (original path[4:])  (failed=3)
+[KILLED] M5 bytes decoded as mbcs (original)  (failed=2)
+[KILLED] M6 trailing-separator guard removed  (failed=4)
+[KILLED] M7 legacy skips normalisation  (failed=13)
+[KILLED] M8 modern skips normalisation  (failed=15)
+[KILLED] M9 CoInitialize outside try (original leak)  (failed=1)
+[KILLED] M10 com_error not converted (except clause narrowed)  (failed=2)
+
+Mutation score: 10/10

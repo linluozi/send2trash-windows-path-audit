@@ -1,0 +1,20 @@
+scenario               backend  BEFORE (2.1.0+)                                AFTER                                         
+----------------------------------------------------------------------------------------------------------------------------
+forward_slash          legacy   FileNotFoundError / kept                       no-exception / DELETED                          <== CHANGED
+forward_slash          modern   OSError / kept                                 no-exception / DELETED                          <== CHANGED
+dot_component          legacy   ProcessLookupError / kept                      no-exception / DELETED                          <== CHANGED
+dot_component          modern   OSError / kept                                 no-exception / DELETED                          <== CHANGED
+dotdot_component       legacy   OSError / kept                                 no-exception / DELETED                          <== CHANGED
+dotdot_component       modern   OSError / kept                                 no-exception / DELETED                          <== CHANGED
+dir_trailing_slash     legacy   OSError / kept                                 no-exception / DELETED                          <== CHANGED
+dir_trailing_slash     modern   OSError / kept                                 no-exception / DELETED                          <== CHANGED
+file_trailing_slash    legacy   OSError / kept                                 FileNotFoundError / kept                      
+file_trailing_slash    modern   OSError / kept                                 FileNotFoundError / kept                      
+empty_string           legacy   FileNotFoundError / kept                       FileNotFoundError / kept                      
+empty_string           modern   OSError / kept                                 FileNotFoundError / kept                      
+nul_byte               legacy   ArgumentError / kept                           ValueError / kept                             
+nul_byte               modern   no-exception / DELETED                         ValueError / kept                               <== CHANGED
+bytes_utf8             legacy   FileNotFoundError / kept                       no-exception / DELETED                          <== CHANGED
+bytes_utf8             modern   FileNotFoundError / kept                       no-exception / DELETED                          <== CHANGED
+unc_long_prefix        legacy   OSError / kept                                 OSError / kept                                
+unc_long_prefix        modern   FileNotFoundError / kept                       FileNotFoundError / kept                      

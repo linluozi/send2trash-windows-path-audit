@@ -1,0 +1,12 @@
+*.pyc
+*.egg-info
+/build
+/dist
+.DS_Store
+/.tox
+__pycache__
+/env
+.venv
+.pytest_cache
+*.png
+!docs/assets/*.png

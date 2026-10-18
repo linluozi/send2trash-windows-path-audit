@@ -1,0 +1,39 @@
+baseline commit: 
+patched util.py sha1 vs baseline util.py differ: True
+
+FAILED tests/test_win_path_handling.py::test_modern_com_initialisation_is_balanced_on_failure
+FAILED tests/test_win_path_handling.py::test_modern_failure_does_not_leave_the_apartment_uninitialised
+FAILED tests/test_win_path_handling.py::test_long_path_prefix_translates_to_a_plain_absolute_path
+30 failed, 9 passed in 1.05s
+
+30 failed on unpatched source:
+   FAILED test_absolute_path_variants_are_trashed[forward-slashes-legacy]
+   FAILED test_absolute_path_variants_are_trashed[forward-slashes-modern]
+   FAILED test_absolute_path_variants_are_trashed[dot-component-legacy]
+   FAILED test_absolute_path_variants_are_trashed[dot-component-modern]
+   FAILED test_absolute_path_variants_are_trashed[dotdot-component-legacy]
+   FAILED test_absolute_path_variants_are_trashed[dotdot-component-modern]
+   FAILED test_absolute_path_variants_are_trashed[forward-slashes-and-dot-legacy]
+   FAILED test_absolute_path_variants_are_trashed[forward-slashes-and-dot-modern]
+   FAILED test_absolute_path_variants_are_trashed[doubled-separator-legacy]
+   FAILED test_absolute_path_variants_are_trashed[doubled-separator-modern]
+   FAILED test_directory_with_trailing_separator_is_trashed[/-legacy]
+   FAILED test_directory_with_trailing_separator_is_trashed[/-modern]
+   FAILED test_directory_with_trailing_separator_is_trashed[\\\\-modern]
+   FAILED test_file_with_trailing_separator_is_rejected_not_ignored[\\-legacy]
+   FAILED test_file_with_trailing_separator_is_rejected_not_ignored[\\-modern]
+   FAILED test_blank_path_is_rejected[-legacy]
+   FAILED test_blank_path_is_rejected[-modern]
+   FAILED test_blank_path_is_rejected[.-legacy]
+   FAILED test_blank_path_is_rejected[.-modern]
+   FAILED test_blank_path_is_rejected[..-legacy]
+   FAILED test_blank_path_is_rejected[..-modern]
+   FAILED test_unc_long_path_prefix_is_not_stripped_into_a_relative_path[legacy]
+   FAILED test_unc_long_path_prefix_is_not_stripped_into_a_relative_path[modern]
+   FAILED test_embedded_nul_is_rejected[legacy]
+   FAILED test_embedded_nul_is_rejected[modern]
+   FAILED test_bytes_path_uses_the_filesystem_encoding[legacy]
+   FAILED test_bytes_path_uses_the_filesystem_encoding[modern]
+   FAILED test_modern_com_initialisation_is_balanced_on_failure
+   FAILED test_modern_failure_does_not_leave_the_apartment_uninitialised
+   FAILED test_long_path_prefix_translates_to_a_plain_absolute_path
