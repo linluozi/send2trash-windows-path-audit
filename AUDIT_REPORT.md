@@ -397,19 +397,39 @@ python audit_tools/mutation_check.py
 
 ## 12. 交付物
 
-| 文件 | 说明 |
+| 位置 | 说明 |
 |---|---|
-| `send2trash-path-audit-2026-10-18.zip` | 完整修改后源码，解压后可直接 `pytest tests`，实测 61 passed / 1 skipped |
+| **https://github.com/linluozi/send2trash-windows-path-audit** | 仓库（PUBLIC，BSD-3 原样保留） |
+| **https://linluozi.github.io/send2trash-windows-path-audit/** | 在线阅读版（GitHub Pages） |
+| `send2trash-path-audit-2026-10-18.zip` | 完整修改后源码，解压后可直接 `pytest tests` |
 | `AUDIT_REPORT.md` | 本报告（最详细，含全部踩坑） |
 | `README.md` | 仓库首页简版说明 |
 | `index.html` | 单文件在线报告页（图片内联 base64，离线可开） |
-| `NOTICE.md` | BSD 修改声明（随 ZIP 分发） |
+| `NOTICE.md` | BSD 修改声明 |
 | `docs/assets/*.png` | 三张配图，`bench/make_figures.py` 从 `audit/*.txt` 生成 |
 | `audit/*.txt` | 本次运行的原始输出，未编辑 |
 
 配图与页面均由脚本生成，**数字不手写**：`make_figures.py` 与 `make_page.py` 都从
-`audit/` 下的真实运行输出解析。页面另由 `bench/verify_page.py` 在 headless Chromium 中
-实测：3 张图 `naturalWidth>0`、背景/前景色正确、桌面与移动端均无横向溢出、无 console 错误。
+`audit/` 下的真实运行输出解析，`make_page.py` 还会断言占位符全部被替换。
+
+### 发布后逐项核验
+
+| 检查 | 结果 |
+|---|---|
+| `git ls-remote` ref 数 | 2（HEAD + refs/heads/main） |
+| 远端 tree sha == 本地 `HEAD^{tree}` | `001ee3a4…5dd28` ✅ |
+| `LICENSE` blob sha == 上游 | `221c8299…411c` ✅ |
+| 11 个未改动源文件 blob sha == 上游 | 11/11 MATCH ✅ |
+| 三张配图 blob sha == 本地 | 3/3 MATCH ✅ |
+| 全新克隆 `pytest tests` | 61 passed, 1 skipped ✅ |
+| 全新克隆 CRLF 检查 | 0 个文件含 CRLF ✅ |
+| Pages 线上页 Playwright | 200、3 图 naturalWidth>0、背景/前景色正确、无溢出、无 console 错误 ✅ |
+| GitHub 仓库页 README 三图 | 渲染尺寸 1755×1344 / 1528×548 / 1984×1025 ✅ |
+
+> 🔴 **`core.autocrlf=true` 会让工作树是 CRLF、blob 是 LF**，`git add` 时刷一屏
+> "CRLF will be replaced by LF" 警告看着吓人，但**blob 才是仓库真身**。判「与上游逐字节一致」
+> 必须比 blob sha（`git cat-file -p HEAD:<path> | git hash-object --stdin` vs `gh api .../contents/<path> --jq .sha`），
+> 不能在 worktree 上 `diff`。
 
 ZIP 校验：
 
