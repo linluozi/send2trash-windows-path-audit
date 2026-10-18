@@ -434,10 +434,10 @@ python audit_tools/mutation_check.py
 ZIP 校验：
 
 ```
-sha256  6c2a2b68f10032f20c02759b2a064b7b15048f29355724cfb73b01805ebe7774
+sha256  d494b0967883eeb899fe5f5fd45c8a214fde2c76b0989dd8d775fbc596d9651b
 ```
 
-解压后已核验：36/36 个文件与工作树**逐字节一致**，无 CRLF，无 `__pycache__`/`.pyc`。
+解压后已核验：57 个条目，`pytest tests` 全绿，含配图与 `index.html`；无 CRLF，无 `__pycache__`/`.pyc`。
 
 ---
 
